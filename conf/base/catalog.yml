@@ -9,3 +9,7 @@ cleaned_salary_data:
   filepath: data/02_intermediate/cleaned_salary_data.xlsx
   save_args:
     index: False
+
+regressor:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/06_models/regressor.pkl

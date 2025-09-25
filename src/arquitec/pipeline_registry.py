@@ -1,9 +1,7 @@
-"""Project pipelines."""
-
-from __future__ import annotations
-
-from kedro.framework.project import find_pipelines
+# ...existing code...
 from kedro.pipeline import Pipeline
+from arquitec.pipelines import data_processing
+from arquitec.pipelines import data_science  # <-- 1. Importa el nuevo pipeline
 
 
 def register_pipelines() -> dict[str, Pipeline]:
@@ -12,6 +10,12 @@ def register_pipelines() -> dict[str, Pipeline]:
     Returns:
         A mapping from pipeline names to ``Pipeline`` objects.
     """
-    pipelines = find_pipelines()
-    pipelines["__default__"] = sum(pipelines.values(), Pipeline([]))
-    return pipelines
+    data_processing_pipeline = data_processing.create_pipeline()
+    data_science_pipeline = data_science.create_pipeline()  # <-- 2. Crea una instancia
+
+    return {
+        "dp": data_processing_pipeline,
+        "ds": data_science_pipeline,  # <-- 3. Añádelo al diccionario
+        "__default__": data_processing_pipeline
+        + data_science_pipeline,  # <-- 4. Combínalos para la ejecución por defecto
+    }
