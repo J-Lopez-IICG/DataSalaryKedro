@@ -1,0 +1,11 @@
+raw_salary_data:
+  type: kedro_datasets.pandas.CSVDataset 
+  filepath: data/01_raw/Salary_Data.csv
+  load_args:
+    sep: ','
+
+cleaned_salary_data:
+  type: kedro_datasets.pandas.ExcelDataset 
+  filepath: data/02_intermediate/cleaned_salary_data.xlsx
+  save_args:
+    index: False
