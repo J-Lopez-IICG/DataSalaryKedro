@@ -52,8 +52,8 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local.
 Primero, clona este repositorio en tu máquina.
 
 ```bash
-git clone https://github.com/tu-usuario/ArquitecSalaryAnalysis.git
-cd ArquitecSalaryAnalysis
+git clone https://github.com/J-Lopez-IICG/DataSalaryKedro.git
+cd DataSalaryKedro
 ```
 
 ### 2. Crear y Activar un Entorno Virtual
