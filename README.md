@@ -1,101 +1,112 @@
-# arquitec
+# ArquitecSalaryAnalysis
 
 [![Powered by Kedro](https://img.shields.io/badge/powered_by-kedro-ffc900?logo=kedro)](https://kedro.org)
 
-## Overview
+## Visión General
 
-This is your new Kedro project, which was generated using `kedro 1.0.0`.
+Este proyecto Kedro implementa un pipeline de ciencia de datos de extremo a extremo para analizar la relación entre los años de experiencia y el salario. La solución ingiere un conjunto de datos crudos, lo procesa para garantizar su calidad, entrena un modelo de regresión lineal para predecir salarios y, finalmente, evalúa y visualiza el rendimiento del modelo.
 
-Take a look at the [Kedro documentation](https://docs.kedro.org) to get started.
+El objetivo es demostrar un flujo de trabajo de Machine Learning estructurado y reproducible, donde cada paso, desde la limpieza de datos hasta la generación de reportes, está encapsulado en un pipeline modular y robusto.
 
-## Rules and guidelines
+---
 
-In order to get the best out of the template:
+## Estructura del Proyecto
 
-* Don't remove any lines from the `.gitignore` file we provide
-* Make sure your results can be reproduced by following a data engineering convention
-* Don't commit data to your repository
-* Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
+El proyecto se organiza en los siguientes pipelines principales:
 
-## How to install dependencies
+*   **`data_processing`**: Se enfoca en la limpieza y preparación inicial de los datos. Toma el `Salary_Data.csv` crudo, elimina filas con valores nulos y lo guarda como un archivo intermedio (`cleaned_salary_data.xlsx`), listo para el modelado.
+*   **`data_science`**: Contiene la lógica de Machine Learning. Este pipeline:
+    *   Divide los datos limpios en conjuntos de entrenamiento y prueba (80/20).
+    *   Entrena un modelo de `LinearRegression` de scikit-learn utilizando los datos de entrenamiento.
+    *   Evalúa el modelo calculando su coeficiente de determinación (R²).
+    *   Guarda el modelo entrenado (`regressor.pkl`) para su uso futuro.
+*   **`reporting`**: Se encarga de la visualización de resultados. Carga el modelo entrenado y los datos de prueba para generar una gráfica que compara los salarios reales con la línea de regresión predicha por el modelo, guardándola como `regression_plot.png`.
 
-Declare any dependencies in `requirements.txt` for `pip` installation.
+---
 
-To install them, run:
+## Resultados y Visualización
 
+El pipeline genera un modelo predictivo y una visualización que resume su rendimiento.
+
+### Rendimiento del Modelo
+
+*   **Coeficiente de Determinación (R²)**: **0.66**. Esto indica que el modelo puede explicar aproximadamente el 66% de la variabilidad en los salarios basándose en los años de experiencia.
+*   **Fórmula de Regresión**: `Salario ≈ 7821.49 * Años de Experiencia + 36239.95`
+
+### Gráfica de Regresión
+
+La siguiente gráfica muestra los salarios reales del conjunto de prueba (puntos azules) y la línea de predicción del modelo (línea roja discontinua).
+
+![Gráfica de Regresión Lineal](data/08_reporting/regression_plot.png)
+
+La visualización confirma una clara correlación positiva: a medida que aumentan los años de experiencia, también lo hace el salario. La línea de regresión muestra el ajuste del modelo a esta tendencia.
+
+---
+
+## Instalación y Ejecución
+
+Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local.
+
+### 1. Clonar el Repositorio
+
+Primero, clona este repositorio en tu máquina.
+
+```bash
+git clone https://github.com/tu-usuario/ArquitecSalaryAnalysis.git
+cd ArquitecSalaryAnalysis
 ```
+
+### 2. Crear y Activar un Entorno Virtual
+
+Es una práctica recomendada utilizar un entorno virtual para aislar las dependencias del proyecto.
+
+```bash
+# Crear el entorno virtual
+python -m venv venv
+
+# Activar en Windows (PowerShell)
+.\venv\Scripts\Activate.ps1
+
+# Activar en macOS/Linux
+# source venv/bin/activate
+```
+
+### 3. Instalar Dependencias
+
+Una vez que el entorno virtual esté activado, instala todas las librerías necesarias.
+
+```bash
 pip install -r requirements.txt
 ```
 
-## How to run your Kedro pipeline
+### 4. Ejecutar el Pipeline
 
-You can run your Kedro project with:
+Con las dependencias instaladas, puedes ejecutar el pipeline completo con un solo comando.
 
-```
+```bash
 kedro run
 ```
 
-## How to test your Kedro project
+Esto ejecutará todos los nodos en secuencia, generando los datos limpios, el modelo entrenado y la gráfica de resultados en la carpeta `data/`.
 
-Have a look at the file `tests/test_run.py` for instructions on how to write your tests. You can run your tests as follows:
+---
 
-```
-pytest
-```
+## Desarrollo con Notebooks
 
-You can configure the coverage threshold in your project's `pyproject.toml` file under the `[tool.coverage.report]` section.
+La carpeta `notebooks` contiene los Jupyter Notebooks utilizados durante la fase de exploración y desarrollo.
 
+Para trabajar con ellos de forma interactiva dentro del contexto de Kedro, ejecuta:
 
-## Project dependencies
-
-To see and update the dependency requirements for your project use `requirements.txt`. You can install the project requirements with `pip install -r requirements.txt`.
-
-[Further information about project dependencies](https://docs.kedro.org/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
-
-## How to work with Kedro and notebooks
-
-> Note: Using `kedro jupyter` or `kedro ipython` to run your notebook provides these variables in scope: `context`, 'session', `catalog`, and `pipelines`.
->
-> Jupyter, JupyterLab, and IPython are already included in the project requirements by default, so once you have run `pip install -r requirements.txt` you will not need to take any extra steps before you use them.
-
-### Jupyter
-To use Jupyter notebooks in your Kedro project, you need to install Jupyter:
-
-```
-pip install jupyter
-```
-
-After installing Jupyter, you can start a local notebook server:
-
-```
+```bash
+kedro jupyter lab
+# o también
 kedro jupyter notebook
 ```
 
-### JupyterLab
-To use JupyterLab, you need to install it:
+> **Nota**: Al usar estos comandos, Kedro inicia el notebook con las variables `context`, `session`, `catalog` y `pipelines` ya cargadas, facilitando la interacción con los datos y funciones del proyecto.
 
-```
-pip install jupyterlab
-```
+## Reglas y Directrices
 
-You can also start JupyterLab:
-
-```
-kedro jupyter lab
-```
-
-### IPython
-And if you want to run an IPython session:
-
-```
-kedro ipython
-```
-
-### How to ignore notebook output cells in `git`
-To automatically strip out all output cell contents before committing to `git`, you can use tools like [`nbstripout`](https://github.com/kynan/nbstripout). For example, you can add a hook in `.git/config` with `nbstripout --install`. This will run `nbstripout` before anything is committed to `git`.
-
-> *Note:* Your output cells will be retained locally.
-
-## Package your Kedro project
-
-[Further information about building project documentation and packaging your project](https://docs.kedro.org/en/stable/tutorial/package_a_project.html)
+*   No elimines ninguna línea del archivo `.gitignore`.
+*   No subas datos al repositorio (la carpeta `data/` está ignorada por defecto).
+*   No subas credenciales o configuraciones locales. Mantenlas en la carpeta `conf/local/`.
