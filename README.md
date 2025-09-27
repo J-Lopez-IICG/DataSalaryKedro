@@ -26,7 +26,19 @@ El proyecto se organiza en los siguientes pipelines principales:
 
 ## Resultados y Visualización
 
-El pipeline genera un modelo predictivo y una visualización que resume su rendimiento.
+El dataset final procesado se utiliza como fuente de datos para un dashboard interactivo en Power BI, que resume los hallazgos clave del análisis.
+
+[**Ver Dashboard de Salarios en Power BI**](https://app.powerbi.com/view?r=eyJrIjoiNGE1ZGMwMTItYjVhNS00NWEwLTgyNDItZjkyYTBhOTUyY2M2IiwidCI6ImRmNGI2MzcyLWEwM2EtNDZmMC05YmY1LTdmOGQzNzhhMzMzNCIsImMiOjR9)
+
+### Principales Hallazgos del Dashboard
+
+*   **Volumen de Datos:** El análisis se basa en un conjunto de **6,698 registros** de profesionales de diversas áreas.
+*   **Influencia de la Educación:** Se observa una correlación directa entre el nivel educativo y el salario promedio, donde los profesionales con **doctorado (PhD)** alcanzan la remuneración más alta.
+*   **Brecha Salarial de Género:** Aunque la distribución de género en la muestra es relativamente pareja (55% hombres, 45% mujeres), el salario promedio de los hombres es superior al de las mujeres en el conjunto de datos analizado.
+*   **Cargos de Alta Gerencia:** Los roles ejecutivos como **CEO, CTO y Chief Data Officer** se posicionan como los mejor remunerados, superando significativamente a otros puestos.
+*   **Experiencia vs. Edad:** El análisis visual confirma una clara correlación positiva entre la edad, los años de experiencia y el salario, mostrando una progresión salarial a lo largo de la carrera profesional.
+
+---
 
 ### Rendimiento del Modelo
 
