@@ -4,7 +4,7 @@
 
 ## Visión General
 
-Este proyecto Kedro implementa un pipeline de ciencia de datos de extremo a extremo para analizar la relación entre los años de experiencia y el salario. La solución ingiere un conjunto de datos crudos, lo procesa para garantizar su calidad, entrena un modelo de regresión lineal para predecir salarios y, finalmente, evalúa y visualiza el rendimiento del modelo.
+Este proyecto Kedro implementa un pipeline de ciencia de datos de extremo a extremo para analizar la relación entre los años de experiencia y el salario. La solución ingiere un conjunto de datos crudos, obtenido de [Kaggle: Salary Prediction Dataset](https://www.kaggle.com/datasets/wardabilal/salary-prediction-dataset), lo procesa para garantizar su calidad, entrena un modelo de regresión lineal para predecir salarios y, finalmente, evalúa y visualiza el rendimiento del modelo.
 
 El objetivo es demostrar un flujo de trabajo de Machine Learning estructurado y reproducible, donde cada paso, desde la limpieza de datos hasta la generación de reportes, está encapsulado en un pipeline modular y robusto.
 
