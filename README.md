@@ -10,6 +10,11 @@ El objetivo es demostrar un flujo de trabajo de Machine Learning estructurado y 
 
 ---
 
+## Hipótesis
+
+La hipótesis central de este análisis es que **existe una correlación lineal positiva y significativa entre los años de experiencia de un profesional y su salario**. Se espera que a medida que aumentan los años de experiencia, el salario correspondiente también aumente de manera predecible. El modelo de regresión lineal se utilizará para cuantificar esta relación y validar esta suposición.
+
+---
 ## Estructura del Proyecto
 
 El proyecto se organiza en los siguientes pipelines principales:
@@ -38,17 +43,17 @@ El dataset final procesado se utiliza como fuente de datos para un dashboard int
 *   **Cargos de Alta Gerencia:** Los roles ejecutivos como **CEO, CTO y Chief Data Officer** se posicionan como los mejor remunerados, superando significativamente a otros puestos.
 *   **Experiencia vs. Edad:** El análisis visual confirma una clara correlación positiva entre la edad, los años de experiencia y el salario, mostrando una progresión salarial a lo largo de la carrera profesional.
 
-### Desafíos Técnicos Solucionados
+### Desafíos Técnicos Solucionados en el EDA
 
-*   **Estandarización de Datos Categóricos**: Se aplicaron técnicas de limpieza para normalizar valores en columnas clave como `Education Level` y `Job Title`. Esto fue crucial para agrupar y visualizar correctamente los datos en Power BI, evitando la fragmentación por inconsistencias textuales (ej. "Bachelor's" vs. "Bachelor's Degree").
-
-*   **Manejo de Datos Nulos e Inconsistentes**: El pipeline identifica y elimina sistemáticamente registros con valores faltantes en columnas críticas como el salario o los años de experiencia. Este paso garantiza la integridad y fiabilidad del análisis, previniendo errores de cálculo en las visualizaciones.
-
-*   **Conversión de Tipos de Datos**: Se implementó una lógica para asegurar que las columnas numéricas (como `Salary` y `Age`) fueran tratadas con el tipo de dato correcto (entero o flotante), solucionando problemas comunes de importación donde los números son leídos como texto.
-
-*   **Automatización del Flujo de Datos**: Al encapsular todo el proceso de limpieza en un pipeline de Kedro, se garantiza que la preparación de datos para Power BI sea completamente automatizada y reproducible. Cualquier actualización del dataset crudo puede ser procesada con un solo comando, asegurando que el dashboard siempre refleje la información más reciente y limpia.
+*   **Manejo de Datos Nulos e Inconsistentes**: El pipeline identifica y elimina sistemáticamente registros con valores faltantes en columnas críticas como el salario o los años de experiencia.
+*   **Conversión de Tipos de Datos**: Se implementó una lógica para asegurar que las columnas numéricas (como `Salary` y `Age`) fueran tratadas con el tipo de dato correcto.
+*   **Automatización del Flujo de Datos**: Al encapsular todo el proceso de limpieza en un pipeline de Kedro, se garantiza que la preparación de datos para Power BI sea completamente automatizada y reproducible.
 
 ---
+
+## Resultados del Modelo (Pipeline Kedro)
+
+Esta sección se centra exclusivamente en los resultados del modelo de regresión lineal entrenado por el pipeline de Kedro, que predice el salario basándose únicamente en los años de experiencia.
 
 ### Rendimiento del Modelo
 
