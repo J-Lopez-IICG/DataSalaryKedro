@@ -33,7 +33,7 @@ El proyecto se organiza en los siguientes pipelines principales:
 
 El dataset final procesado se utiliza como fuente de datos para un dashboard interactivo en Power BI, que resume los hallazgos clave del análisis.
 
-[**Ver Dashboard de Salarios en Power BI**](https://app.powerbi.com/view?r=eyJrIjoiNGE1ZGMwMTItYjVhNS00NWEwLTgyNDItZjkyYTBhOTUyY2M2IiwidCI6ImRmNGI2MzcyLWEwM2EtNDZmMC05YmY1LTdmOGQzNzhhMzMzNCIsImMiOjR9)
+[**Ver Dashboard de Salarios en Power BI: Data Salary**](https://app.powerbi.com/view?r=eyJrIjoiNGE1ZGMwMTItYjVhNS00NWEwLTgyNDItZjkyYTBhOTUyY2M2IiwidCI6ImRmNGI2MzcyLWEwM2EtNDZmMC05YmY1LTdmOGQzNzhhMzMzNCIsImMiOjR9)
 
 ### Principales Hallazgos del Dashboard
 
